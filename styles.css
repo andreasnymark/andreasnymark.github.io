@@ -1,0 +1,206 @@
+html {
+	background: #07f;
+}
+html,
+body {
+	font-family: 'Muli', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: 1em;
+	color: #222;
+}
+section {
+	max-width: 42em;
+	margin: 8vw 0 8vw 8vw;
+}
+
+a {
+	display: inline-block;
+}
+button {
+	border: 1px solid rgba(0,0,0,.2);
+	background: #fff;
+	padding: 1em 2em;
+}
+button:focus,
+a:focus {
+	box-shadow: 0 0 0 2px #111;
+	outline: none;
+}
+hr {
+	border: 0;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	margin: 2em 0;
+}
+body > hr {
+	margin: 6em 0;
+	border-width: 3px;
+}
+h1 {
+	font-size: 4rem;
+}
+p {
+	font-size: 1.4rem;
+	line-height: 1.5;
+	hyphens: auto;
+	font-weight: 300;
+}
+
+.Preamble p {
+	font-size: 1.8rem;
+}
+
+
+
+.Flex {
+	display: flex;
+}
+.Flex--end {
+	justify-content: flex-end;
+}
+.Flex-item.Flex-item--end {
+	align-self: flex-end;
+}
+
+.Example {
+	background: #f7f7f7;
+	margin: 3em 0 3em -8vw;
+	padding: 2vw 2vw 2vw 8vw;
+	width: calc( 72vw - 10em );
+	position: relative;
+}
+.Example::before {
+	z-index: 20;
+	content: "Example";
+	font-size: .6875rem;
+	text-transform: uppercase;
+	position: absolute;
+	right: calc( 100% - 1.15em );
+	top: 2rem;
+	letter-spacing: .08em;
+	color: #fff;
+	transform: rotate(-90deg);
+}
+.Example:after {
+	content: "";
+	position: absolute;
+	right: 100%;
+	top: 0; bottom: 0;
+	width: 30px;
+	background: #52b5a0;
+	z-index: 10;
+}
+
+/* Nav
+==================================== */
+
+.Nav {
+	max-width: 10em;
+	margin: 0 auto;
+	margin-right: 10%;
+}
+.Nav-link {
+	color: #07f;
+	text-decoration: none;
+	font-weight: 400;
+}
+.Nav-link:hover {
+	color: #111;
+}
+.Nav-title {
+	text-transform: uppercase;
+	font-size: .6875rem;
+	font-weight: 700;
+	letter-spacing: .08em;
+	margin: 2em 0 1em;
+}
+.Nav-group {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.Nav-item {
+	padding: .4em 0 .5em;
+
+}
+.Nav-item + .Nav-item  {
+	border-top: 1px solid rgba(0,0,0,.1);
+}
+
+/* Header
+==================================== */
+
+.Header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 50px;
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.05);
+	z-index: 1000;
+}
+
+/* Outline
+==================================== */
+
+.Outline {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	min-height: 100vh;
+}
+.Outline-aside,
+.Outline-main {
+	padding: 12vh 0 18vh;
+}
+.Outline-aside {
+	flex-basis: 28vw;
+	background: #E7F0F1; //#F0ECE9;
+}
+.Outline-main {
+	flex-basis: 72vw;
+	background: #fff;
+}
+
+
+/* Toggle
+==================================== */
+
+.Toggle {
+	position: relative;
+	overflow: hidden;
+}
+.Toggle.is-expanded {
+	overflow: visible;
+}
+.Toggle-panel {
+	visibility: hidden;
+    height: 0;
+	width: 0;
+}
+:not(.Toggle--static) > .Toggle-panel {
+	background: #fff;
+	box-shadow: 0 5px 15px rgba( 0,0,0, .2 );
+    position: absolute;
+    z-index: 1000;
+    top: 100%; left: 0;
+    transition: transform .2s ease-out;
+}
+.is-expanded .Toggle-panel {
+    visibility: visible;
+    height: auto;
+	width: auto;
+}
+.Toggle-panel.Toggle-panel--right {
+	left: auto;
+	right: 0;
+}
+.Toggle-panel.Toggle-panel--up {
+	top: auto;
+	bottom: 100%;
+}
+.is-expanded .Toggle-panel--wide {
+	width: 500px;
+}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Andreas Nymark</title>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" type="text/css">
+		<link rel="stylesheet" href="styles.css" type="text/css">
+	</head>
+	<body>
+
+		<header class="Header" role="banner">
+			<h1>Andreas Nymark</h1>
+
+		</header>
+
+		<div class="Outline">
+			<div class="Outline-aside">
+				<nav class="Nav">
+					<ul class="Nav-group">
+						<li class="Nav-item"><a href="#merl.toggle" class="Nav-link">Intro</a></li>
+						<li class="Nav-item"><a href="#merl.utils" class="Nav-link">About Merl</a></li>
+					</ul>
+					<h3 class="Nav-title">Modules</h3>
+					<ul class="Nav-group">
+						<li class="Nav-item"><a href="#merl.toggle" class="Nav-link">Toggle</a></li>
+						<li class="Nav-item"><a href="#merl.utils" class="Nav-link">Async load</a></li>
+						<li class="Nav-item"><a href="#merl.utils" class="Nav-link">Scroll toggle</a></li>
+						<li class="Nav-item"><a href="#merl.utils" class="Nav-link">Incremental search</a></li>
+						<li class="Nav-item"><a href="#merl.utils" class="Nav-link">Word wrap</a></li>
+					</ul>
+					<h3 class="Nav-title">Library</h3>
+					<ul class="Nav-group">
+						<li class="Nav-item"><a href="#merl.utils" class="Nav-link">Utils</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="Outline-main">
+				<section id="intro">
+					<h1>The Merl library</h1>
+					<div class="Preamble">
+						<p>A collection of a few javascript modules I’ve built. </p>
+					</div>
+					<p>I’m primarly a designer. But I enjoy tinkering around with javascript. Usually, I solve things in my own way to better understand the challanges. I think these are ready for production. If you think otherwise, please give some feedback.</p>
+				</section>
+				<section id="about">
+					<h1>About Merl</h1>
+					<p>Basically a namespace for my javascript endeavours. As I have a tendency to name things after characters from the Simpson’s, Merl is named after Cletus cousin. A construction worker at the Springfield Dam. </p>
+				</section>
+				<section id="merl.toggle">
+					<h2>Toggle (merl.toggle, <a href="https://github.com/andreasnymark/merl.toggle" title="merl.toggle on Github">Github</a>)</h2>
+					<p>By default, merl.toggle focus on first a/button/input when panel is visible. </p>
+					<p>Kind of nice feature. If default location for overlay is outside of viewport, the javascript will add a few classes depending on where, and relocate the overlay. E.g. scroll down so the toggle button almost touches the bottom part of the viewport. It’s far from a perfect solution, especially if your overlay is crazy long.</p>
+					<div class="Example">
+						<h2>Alternate handle text</h2>
+						<div class="Toggle" data-toggle='{"alternate": "Close toggle", "focus": "input"}'>
+							<button aria-haspopup="true" class="Toggle-handle" type="button">Toggle handle</button>
+							<div aria-label="popup" aria-hidden="true" class="Toggle-panel">
+								<h1>Panel</h1>
+								<a href="#">Link</a>
+								<a href="#">Link</a>
+								<input type="text">
+								<button>Lorem</button>
+							</div>
+						</div>
+						<hr>
+						<h2>Toggle inline content, keep open</h2>
+						<div class="Toggle Toggle--static" data-toggle='{"alternate": "Close toggle", "keepOpen": "true"}'>
+							<button aria-haspopup="true" class="Toggle-handle" type="button">Toggle handle</button>
+							<div aria-label="popup" aria-hidden="true" class="Toggle-panel">
+								<h1>Panel</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio neque sit quisquam rem nihil ducimus eum, facere a quos, totam molestias adipisci voluptate provident impedit ab iste quis. Impedit, commodi.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<hr>
+
+				<section id="merl.utils">
+					<h1>merl.utils (<a href="https://github.com/andreasnymark/merl.utils">andreasnymark/merl.utils</a>)</h1>
+					<p>A collection of utility functions. I’ve used these throughout the years, and can’t give credit where credit is due. People contributing on sites like Stack Overflow/plainjs</p>
+					<div class="Example">
+					</div>
+				</section>
+
+				<footer role="contentinfo">
+					<p>Andreas Nymark is a freelance interaction + graphic designer. You should really consider hiring him.</p>
+				</footer>
+			</div>
+		</div>
+
+
+
+
+		<!-- <script src="//rawgit.com/andreasnymark/merl.utils/master/utils.js"></script> -->
+		<script src="//rawgit.com/andreasnymark/merl.toggle/master/toggle.js"></script>
+		<script src="//merl-pattern.local/Toggle/toggle.js"></script>
+		<script>
+			document.onreadystatechange = function () {
+				if ( document.readyState === 'interactive' ) {
+					merl.toggle.init();
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -27,8 +27,8 @@
 					<h3 class="Nav-title">Modules</h3>
 					<ul class="Nav-group">
 						<li class="Nav-item"><a href="#merl.toggle" class="Nav-link">Toggle</a></li>
+						<li class="Nav-item"><a href="#merl.scrollToggle" class="Nav-link">Scroll toggle</a></li>
 						<li class="Nav-item"><!--a href="#merl.utils" class="Nav-link"-->Async load<!--/a--></li>
-						<li class="Nav-item"><!--a href="#merl.utils" class="Nav-link"-->Scroll toggle<!--/a--></li>
 						<li class="Nav-item"><!--a href="#merl.utils" class="Nav-link"-->Incremental search<!--/a--></li>
 						<li class="Nav-item"><!--a href="#merl.utils" class="Nav-link"-->Word wrap<!--/a--></li>
 					</ul>
@@ -132,6 +132,29 @@ merl.module1.init( { <strong>'param':'.Component-element'</strong> } );
 
 				<hr>
 
+				<section id="merl.scrollToggle">
+					<h2>scrollToggle (<a href="https://github.com/andreasnymark/merl.scrollToggle" title="merl.scrollToggle on Github">Github</a>)</h2>
+					<p>Toggle class of element based on scroll position and viewport. </p>
+					<div class="Example js-scrollToggle">
+						<div class="Example-block">
+							<h3>Hamburgefonstiv</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem amet iusto officiis ratione laudantium recusandae consequuntur sequi dignissimos, adipisci eaque porro dolore veniam labore doloremque nulla voluptatem velit molestias quas.</p>
+						</div>
+						<div class="Example-block">
+							<h3>Hamburgefonstiv</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem amet iusto officiis ratione laudantium recusandae consequuntur sequi dignissimos, adipisci eaque porro dolore veniam labore doloremque nulla voluptatem velit molestias quas.</p>
+						</div>
+						<div class="Example-block">
+							<h3>Hamburgefonstiv</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem amet iusto officiis ratione laudantium recusandae consequuntur sequi dignissimos, adipisci eaque porro dolore veniam labore doloremque nulla voluptatem velit molestias quas.</p>
+						</div>
+					</div>
+					<hr>
+					<a href="#top">Back to the top</a>
+				</section>
+
+				<hr>
+
 				<section id="merl.utils">
 					<h2>Utils (<a href="https://github.com/andreasnymark/merl.utils">Github</a>)</h2>
 					<p>A collection of utility functions. I’ve used these throughout the years, and can’t give credit where credit is due. People contributing on sites like Stack Overflow/plainjs are awesome. </p>
@@ -152,10 +175,12 @@ merl.module1.init( { <strong>'param':'.Component-element'</strong> } );
 
 		<script src="//rawgit.com/andreasnymark/merl.utils/master/utils.js"></script>
 		<script src="//rawgit.com/andreasnymark/merl.toggle/master/toggle.js"></script>
+		<script src="//merl-script.local/scrollToggle/scrollToggle.js"></script>
 		<script>
 			document.onreadystatechange = function () {
 				if ( document.readyState === 'interactive' ) {
 					merl.toggle.init();
+					merl.scrollToggle.init( { 'selectBlock': '.Example-block' } );
 				}
 			}
 		</script>

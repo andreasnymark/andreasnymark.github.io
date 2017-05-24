@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Merl from Andreas Nymark</title>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" type="text/css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700" type="text/css">
+		<link rel="stylesheet" href="styles.css" type="text/css">
+	</head>
+	<body id="top">
+
+		<header class="Header" role="banner">
+			<h1 class="Header-logo">Andreas Nymark</h1>
+			<p class="Header-info">This is a work in progress.</p>
+		</header>
+		<div class="Outline">
+			<div class="Outline-aside">
+				<nav class="Nav">
+					<ul class="Nav-group">
+						<li class="Nav-item"><a href="#intro" class="Nav-link">Intro</a></li>
+						<li class="Nav-item"><a href="#about" class="Nav-link">About Merl</a></li>
+						<li class="Nav-item"><a href="#getting-started" class="Nav-link">Getting started</a></li>
+					</ul>
+					<h3 class="Nav-title">Modules</h3>
+					<ul class="Nav-group">
+						<li class="Nav-item"><a href="#merl.toggle" class="Nav-link">Toggle</a></li>
+						<li class="Nav-item"><!--a href="#merl.utils" class="Nav-link"-->Async load<!--/a--></li>
+						<li class="Nav-item"><!--a href="#merl.utils" class="Nav-link"-->Scroll toggle<!--/a--></li>
+						<li class="Nav-item"><!--a href="#merl.utils" class="Nav-link"-->Incremental search<!--/a--></li>
+						<li class="Nav-item"><!--a href="#merl.utils" class="Nav-link"-->Word wrap<!--/a--></li>
+					</ul>
+					<h3 class="Nav-title">Library</h3>
+					<ul class="Nav-group">
+						<li class="Nav-item"><a href="#merl.utils" class="Nav-link">Utils</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<div class="Outline-main">
+				<section id="intro">
+					<h1>The Merl collection</h1>
+					<div class="Preamble">
+						<p>Merl is a collection consisting of a few javascript modules I’ve built. Initially a Vanilla collection, but more recently I added a micro library. </p>
+					</div>
+					<p>I’m primarly a visual designer. But I do enjoy tinkering around with javascript. Usually, I try to solve things in my own way to better understand the challenges and consequences. In my narrow and privileged world view, I consider these ready for production. If you think otherwise, please send your feedback. </p>
+					<p>Proceed at your own risk. </p>
+				</section>
+
+				<hr>
+
+				<section id="about">
+					<h2>About Merl</h2>
+					<p>It’s basically a namespace for my javascript endeavours. As I have a tendency to name things after characters from the Simpson’s, Merl is named after Cletus cousin Merl. A construction worker at the Springfield Dam. </p>
+					<p>I prefer separating Javascript from styles. As much as possible, I try to not add styles via javascript. </p>
+					<p>The basic structure of each module is pretty much consistent. There are default values which you can override when initiating. And for each module, there are custom settings as well. </p>
+					<hr>
+					<a href="#top">Back to the top</a>
+				</section>
+
+				<hr>
+
+				<section id="getting-started">
+					<h2>Getting started</h2>
+					<p>I include each javascript module just before the end of the closing body-element. Don’t forget utils.js, and put it first: </p>
+<pre>
+&lt;script src="[…]/<strong>utils.js</strong>">&lt;/script>
+&lt;script src="[…]/<strong>module1.js</strong>">&lt;/script>
+</pre>
+					<p>After each module is included, I need to initiate each. Looking something like this, if I’ve got two modules: </p>
+<pre>
+&lt;script src="[…]/utils.js">&lt;/script>
+&lt;script src="[…]/module1.js">&lt;/script>
+&lt;script src="[…]/<strong>module2.js</strong>">&lt;/script>
+&lt;script>
+	document.onreadystatechange = function () {
+		if ( document.readyState === 'interactive' ) {
+			<strong>merl.module1.init();
+			merl.module2.init();</strong>
+		}
+	};
+&lt;/script>
+</pre>
+					<p>Changing default settings for the entire module: </p>
+<pre>
+merl.module1.init( { <strong>'param':'.Component-element'</strong> } );
+</pre>
+					<p>Custom settings for an instance of the module needs to be put on parent element, as JSON: </p>
+<pre>
+&lt;div class="Component" <strong>data-module1='{"param": "value"}'</strong>>
+</pre>
+<p>Notice! Default settings and custom settings doesn’t always use the same parameters. </p>
+				<hr>
+				<a href="#top">Back to the top</a>
+				</section>
+
+				<hr>
+
+				<section id="merl.toggle">
+					<h2>Toggle (<a href="https://github.com/andreasnymark/merl.toggle" title="merl.toggle on Github">Github</a>)</h2>
+					<p>At it’s core, toggles a class on parent element. E.g. I use it to show/hide overlays. Escape and click outside usually hides overlay. </p>
+					<p>If default location for overlay will be outside of viewport, the javascript will add a few classes. This way, you can relocate the overlay. E.g. scroll down so the first example toggle button almost touches the bottom part of the viewport. It’s far from a perfect solution, especially if your overlay is crazy long.</p>
+					<div class="Example">
+						<h3>Alternate handle text</h3>
+						<div class="Toggle" data-toggle='{"alternate": "Close toggle", "focus": "input"}'>
+							<button aria-haspopup="true" class="Toggle-handle" type="button">Toggle handle</button>
+							<div aria-label="popup" aria-hidden="true" class="Toggle-panel">
+								<ul class="List">
+									<li class="List-item">Link item</li>
+									<li class="List-item">Link item</li>
+									<li class="List-item">Link item</li>
+								</ul>
+								<hr>
+								<input type="text">
+								<button>Lorem</button>
+							</div>
+						</div>
+						<hr>
+						<h3>Inline content, keep open</h3>
+						<div class="Toggle Toggle--static" data-toggle='{"alternate": "Close toggle", "keepOpen": "true"}'>
+							<button aria-haspopup="true" class="Toggle-handle" type="button">Toggle handle</button>
+							<div aria-label="popup" aria-hidden="true" class="Toggle-panel">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio neque sit quisquam rem nihil ducimus eum, facere a quos, totam molestias adipisci voluptate provident impedit ab iste quis. Impedit, commodi.</p>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<a href="#top">Back to the top</a>
+				</section>
+
+				<hr>
+
+				<section id="merl.utils">
+					<h2>Utils (<a href="https://github.com/andreasnymark/merl.utils">Github</a>)</h2>
+					<p>A collection of utility functions. I’ve used these throughout the years, and can’t give credit where credit is due. People contributing on sites like Stack Overflow/plainjs are awesome. </p>
+					<hr>
+					<a href="#top">Back to the top</a>
+				</section>
+
+
+			</div>
+		</div>
+
+		<footer role="contentinfo">
+			<p>Andreas Nymark is a freelance interaction + graphic designer. You should really consider <a href="https://www.nymark.me">hiring him</a>.</p>
+		</footer>
+
+
+
+
+		<script src="//rawgit.com/andreasnymark/merl.utils/master/utils.js"></script>
+		<script src="//rawgit.com/andreasnymark/merl.toggle/master/toggle.js"></script>
+		<script>
+			document.onreadystatechange = function () {
+				if ( document.readyState === 'interactive' ) {
+					merl.toggle.init();
+				}
+			}
+		</script>
+	</body>
+</html>

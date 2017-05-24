@@ -17,7 +17,6 @@ section {
 	max-width: 42em;
 	margin: 6vw 0 10vw 8vw;
 	display: inline-block;
-	width: 100%;
 }
 footer {
 	position: absolute;
@@ -111,7 +110,7 @@ pre {
 	background: #f7f7f7;
 	margin: 3em 0 3em -8vw;
 	padding: 2vw 2vw 2vw 8vw;
-	width: calc( 72vw - 9em );
+	width: 62vw;
 	position: relative;
 }
 .Example::before {
@@ -126,7 +125,7 @@ pre {
 	color: #fff;
 	transform: rotate(-90deg);
 }
-.Example:after {
+.Example::after {
 	content: "";
 	position: absolute;
 	right: 100%;

@@ -10,14 +10,35 @@ body {
 body {
 	font-size: 1em;
 	color: #222;
+	position: relative;
+	line-height: 1.5;
 }
 section {
 	max-width: 42em;
-	margin: 8vw 0 8vw 8vw;
-}
-
-a {
+	margin: 6vw 0 10vw 8vw;
 	display: inline-block;
+	width: 100%;
+}
+footer {
+	position: absolute;
+	bottom: 4vh;
+    left: 6vw;
+    width: 18vw;
+}
+footer p {
+	font-size: .875rem;
+}
+a {
+	text-decoration: none;
+}
+a:not( [class] ) {
+	display: inline-block;
+	color: inherit;
+	box-shadow: inset 0 -0.15em 0 #07f;
+	text-shadow: 1px 1px 0 #fff;
+}
+a:not( [class] ):hover {
+	color: #07f;
 }
 button {
 	border: 1px solid rgba(0,0,0,.2);
@@ -25,50 +46,72 @@ button {
 	padding: 1em 2em;
 }
 button:focus,
-a:focus {
-	box-shadow: 0 0 0 2px #111;
+a:not(:hover):focus {
+	box-shadow: 0 0 0 .1em #111;
 	outline: none;
 }
 hr {
 	border: 0;
-	border-bottom: 1px solid rgba(0,0,0,.1);
+	border-bottom: 1px solid rgba(0,0,0,.05);
 	margin: 2em 0;
 }
-body > hr {
-	margin: 6em 0;
-	border-width: 3px;
+section + hr {
+	margin: 2em 0;
+	border-width: 5px;
 }
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 900;
+}
+h1,
+h2 {
 	font-size: 4rem;
 }
+h2 {
+	font-weight: 300;
+	letter-spacing: -.03em;
+}
+h3 {
+	font-size: 1.5rem;
+}
 p {
-	font-size: 1.4rem;
-	line-height: 1.5;
+	font-size: 1.3rem;
 	hyphens: auto;
 	font-weight: 300;
+	letter-spacing: .02em;
 }
+pre {
+	font-family: 'Fira Mono', monospace;
+	font-size: 1rem;
+	line-height: 1.8;
+	padding: 1em;
+	background: #fafafa;
+	border: 1px solid #eee;
+	overflow: scroll;
+	margin: 3rem 0 4rem;
+}
+
+/* Preamble
+==================================== */
 
 .Preamble p {
 	font-size: 1.8rem;
+	line-height: 1.4;
 }
 
 
-
-.Flex {
-	display: flex;
-}
-.Flex--end {
-	justify-content: flex-end;
-}
-.Flex-item.Flex-item--end {
-	align-self: flex-end;
-}
+/* Example
+==================================== */
 
 .Example {
 	background: #f7f7f7;
 	margin: 3em 0 3em -8vw;
 	padding: 2vw 2vw 2vw 8vw;
-	width: calc( 72vw - 10em );
+	width: calc( 72vw - 9em );
 	position: relative;
 }
 .Example::before {
@@ -98,12 +141,10 @@ p {
 
 .Nav {
 	max-width: 10em;
-	margin: 0 auto;
-	margin-right: 10%;
+	margin: 8rem 10% 8rem auto;
 }
 .Nav-link {
 	color: #07f;
-	text-decoration: none;
 	font-weight: 400;
 }
 .Nav-link:hover {
@@ -138,8 +179,33 @@ p {
 	left: 0;
 	right: 0;
 	height: 50px;
+	background: linear-gradient( to right, rgba(231, 240, 241, 0.8) 28%, rgba(255,255,255,.9) 28%, rgba(255,255,255,.9) 100%) no-repeat;
 	box-shadow: inset 0 -1px 0 rgba(0,0,0,.05);
 	z-index: 1000;
+}
+.Header-logo,
+.Header-info {
+	position: absolute;
+	top: 0;
+	margin: 0;
+	padding: 0;
+}
+.Header-logo {
+	background: url('data:image/svg+xml;utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20342%22%3E%3Ctitle%3EAndreas%20Nymark%3C%2Ftitle%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M91.9%200C87.8%200%2085%202.6%2085%206.5s2.6%2010.4%204.6%2014.7c23.5%2050.8%2048.5%2099.2%2048.5%20154.4%200%2025.1-10.6%2036.7-10.6%2036.7-14.7-26.1-87.1-160.1-88.8-163.5s-5.5-4.9-9.9-4.9c-15%200-25%205.7-25%2013.9-.2%206-.3%20124.1.3%20157%20.1%206.1%205.2%2010.9%2012.4%2010.9s13-5.5%2013-12.2c0-24.6.2-123.1.2-123.1s51%2092.5%2068.6%20125.1c6.8%2012.6%2015.3%2020.8%2029%2020.8%2020.7%200%2038.2-20.6%2038.2-57.4%200-67.3-30.9-130.9-64-173-2.4-3-5.8-5.9-9.6-5.9zM673.1%20220.9c-19.9-17.8-61.2-50.4-67.6-55.9%200%200%2027.7-36.1%2027.7-44.7a5%205%200%200%200-5.2-5.1c-5%200-9%202.7-13.1%206.8s-27.7%2028.2-35.4%2036.1l-1-134.6c-.1-8.3-3.7-10.2-10.2-10.2s-11.8%201.9-11.9%2010.3.4%20132.8.4%20132.8-9.3-32.4-30.4-32.4c-30.3%200-31.5%2058.9-41.3%2058.9-12.2%200-22.6-65.7-55.9-65.7-28.9%200-40.2%2038.1-42%2060.2-3.9-22.2-19.3-65.7-42.6-65.7-26.4%200-30.8%2037.1-31.3%2050.4-8.4-20.6-20.4-44.1-50.6-44.1-9.7%200-21.8%203.4-33.7%2011.1-15.5-24.8-32.4-40.1-41.1-40.1-1.6%200-2.6.7-2.6%201.9%200%206.3%2012.7%2025.7%2025.3%2053.9-17.7%2019.7-31.8%2051.2-31.8%2097.7%200%2051.9%2021.2%2098.8%2040.5%2098.8h.2c14.5%200%2042.4-28.3%2042.4-100.5%200-32.1-8.4-62.2-19.7-87l4.4-3.4a30.7%2030.7%200%200%201%2018.1-5.7c15.7%200%2033.2%2024.4%2038.9%2064.8%201.2%208.7%205.9%2011.2%2013.7%2011.2s13.6-5.3%2013.6-12.1c0-37.9%203-65.6%2013.7-65.6%2014.2%200%2020.9%2062%2042.1%2062%2026.5%200%2019.9-59.2%2041.4-59.2%2017%200%2029.1%2063.3%2057.2%2063.3%2032.4%200%2027.6-58.7%2043.8-58.7%2011.7%200%2027.3%2028.6%2027.3%2052.1%200%206.6%201.5%2011.2%209.3%2011.2s14.7-2.5%2015-12.1v-21.2c13.3%208.6%2056.6%2037%2081.3%2050.1%202.3%201.2%208%204.2%2011.9%204.3%202.4%200%204.1-1%204.1-4.1a13.2%2013.2%200%200%200-4.9-9.8zM217.9%20324.7s-14.8-22.2-14.8-79.4c0-19.5%203.7-49.6%2017.1-69.4l1.6-2.2c7.4%2022%2012.9%2047.2%2012.9%2074.5.1%2051.1-16.8%2076.5-16.8%2076.5z%22%2F%3E%3C%2Fsvg%3E%0A') no-repeat;
+	background-size: contain;
+	height: 22px;
+	width: 260px;
+	overflow: hidden;
+	text-indent: -999px;
+	direction: ltr;
+	left: 20px;
+	top: 14px;
+	pointer-events: none;
+}
+.Header-info {
+	right: 20px;
+	font-size: .875rem;
+	line-height: 46px;
 }
 
 /* Outline
@@ -164,6 +230,20 @@ p {
 	background: #fff;
 }
 
+/* List
+==================================== */
+
+.List {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.List-item {
+	padding: .75em 0;
+}
+.List-item + .List-item {
+	border-top: 1px solid #eee;
+}
 
 /* Toggle
 ==================================== */
@@ -171,6 +251,10 @@ p {
 .Toggle {
 	position: relative;
 	overflow: hidden;
+}
+.Toggle-handle:focus {
+	box-shadow: inset 0 0 0 .1em #000;
+	border-color: #000;
 }
 .Toggle.is-expanded {
 	overflow: visible;
@@ -187,6 +271,7 @@ p {
     z-index: 1000;
     top: 100%; left: 0;
     transition: transform .2s ease-out;
+	padding: 1em 1em 1.5em;
 }
 .is-expanded .Toggle-panel {
     visibility: visible;
